@@ -23,33 +23,32 @@ class InputContainer extends React.Component {
   }
 
   handleAddItem() {
-    if(this.state.input.length > 0) {
+    let str = this.state.input.trim();
+
+    if(str.length > 0) {
       this.props.addItem(this.state.input);
       this.setState({input: ''});
     }
   }
 
   render() {
-    //console.log("his.props.list",this.props.list)
     return (
-
-      <input
-        placeholder="+ Add Item"
-        onChange={this.handleChange}
-        onKeyPress={this.handleEnterKey}
-        value={this.state.input}
-      >
-      </input>
-
+      <div className="input-container">
+        <input
+          placeholder="+ Add Item"
+          maxLength="100"
+          type="text"
+          onChange={this.handleChange}
+          onKeyPress={this.handleEnterKey}
+          value={this.state.input}>
+        </input>
+        <span onClick={this.handleAddItem}>
+          +
+        </span>
+      </div>
     );
   }
 }
-/*
-const mapStateToProps = (state) => {
-  return {
-    list: state.Reducer.list
-  }
-}*/
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addItem }, dispatch);

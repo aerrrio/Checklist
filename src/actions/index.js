@@ -5,14 +5,12 @@ export const addItem = (item) => ({
   item
 });
 
-export const delItem = (item, index) => ({
+export const delItem = (index) => ({
   type: types.DEL_ITEM,
-  item,
   index
 });
 
-export const toggleItem = (item, index) => ({
+export const toggleItem = (index) => ({
   type: types.TOGGLE_ITEM,
-  item,
   index
 });

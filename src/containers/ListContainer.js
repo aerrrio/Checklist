@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { delItem, toggleItem } from '../actions'
 
 const ListContainer = ({ list, delItem, toggleItem }) => {
@@ -8,9 +7,9 @@ const ListContainer = ({ list, delItem, toggleItem }) => {
     <ul>
       {list.map((item, index) => (
         <li key={index} className="list-group-item">
-          <span onClick={null}></span>
-          {item}
-          <span onClick={null} ></span>
+          <span onClick={() => toggleItem(index)}>Q</span>
+          {item.text}
+          <span onClick={() => delItem(index)}>X</span>
         </li>
       ))}
     </ul>
@@ -23,8 +22,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ delItem, toggleItem }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);
+export default connect(mapStateToProps, { delItem, toggleItem })(ListContainer);
