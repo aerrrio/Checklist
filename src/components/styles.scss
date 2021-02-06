@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:400,700');
+
+$colors: (
+  primary: #6F96D1,
+  text: #000,
+  text-light: #7a7676,
+  white: #fff,
+  red: #ff2f2f,
+  green: #46a346,
+  greyed: #ccc,
+  background: #eee
+);
+
+$mobile: 479px;
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@function getColor($color) {
+  @return map-get($colors, $color);
+}
+
+body, html {
+  color: getColor(text);
+  background-color: getColor(background);
+  font-size: 16px;
+  font-family: "Open Sans", Verdana, Tahoma, sans-serif;
+  padding: 0;
+  margin: 0;
+
+  @include mobile() {
+    font-size: 18px;
+  }
+}
+
+body {
+  
+  .input-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    //align-items: center;
+    background-color: getColor(primary);
+    padding: 2rem 1rem 1rem 1rem;
+    //box-shadow: 0px 0px 8px 4px rgba(121, 121, 121, 0.4);
+    //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.24), 0 2px 4px rgba(0,0,0,0.24);
+    //border-bottom-color: blue;
+    //border-width: 0 0 2px 0;
+    //border-style: solid;
+    position: relative;
+    z-index: 2;
+
+    .input-field {
+      input{
+        width: 85%;
+        font-size: 16px;
+        padding: 0.75rem 1rem;
+        border-radius: 25px;
+        border-style: none;
+        outline: none;
+        min-width: 275px;
+        max-width: 800px;
+        //box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.12);
+      }
+
+      span {
+        background-color: getColor(white) ;
+        padding: .25rem;
+        position: relative;
+        border-style: none;
+        margin-left: -31px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .list-container{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
+
+    ul{
+      margin: 0;
+      padding: 0;
+      width: 85%;
+      max-width: 700px;
+      //width:300px;
+      
+      li {  
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        list-style: none;
+        background-color:white;
+        padding: 0.75rem;
+        border-radius: 25px;
+        margin: 0.75rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.12);
+        //transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      }
+
+      span{
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .list-btn-check, .list-btn-delete { //change from icon to other later
+        color: #46a346;
+        cursor: pointer;
+        outline: none;
+        outline-color: transparent;
+        text-decoration: none;
+      }
+
+      .list-btn-uncheck {
+        color: getColor(greyed);
+      }
+
+      .list-btn-check {
+        color: getColor(green);
+      }
+
+      .list-btn-delete {
+        color: getColor(greyed);
+      }
+
+      .list-text{
+        word-wrap: break-word;
+        width: 75%;
+      }
+
+    }
+  }
+}
