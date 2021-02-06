@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListContainer from '../containers/ListContainer';
 import InputContainer from '../containers/InputContainer';
-import './App.css';
+import './styles.css';
 
 class App extends Component {
   render() {
