@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addItem } from '../actions'
+import { addItem } from '../actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class InputContainer extends React.Component {
   constructor(props) {
@@ -34,17 +35,19 @@ class InputContainer extends React.Component {
   render() {
     return (
       <div className="input-container">
-        <input
-          placeholder="+ Add Item"
-          maxLength="100"
-          type="text"
-          onChange={this.handleChange}
-          onKeyPress={this.handleEnterKey}
-          value={this.state.input}>
-        </input>
-        <span onClick={this.handleAddItem}>
-          +
-        </span>
+        <div className="input-field">
+          <input
+            placeholder="What needs to be done?"
+            maxLength="100"
+            type="text"
+            onChange={this.handleChange}
+            onKeyPress={this.handleEnterKey}
+            value={this.state.input}>
+          </input>
+          <span onClick={this.handleAddItem}>
+            <FontAwesomeIcon icon="plus" />
+          </span>
+        </div>
       </div>
     );
   }
